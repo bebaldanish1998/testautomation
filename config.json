@@ -1,0 +1,7 @@
+{
+  "browser": "msedge",
+  "url": "https://rta-edu-dev-web.azurewebsites.net/login",
+  "headless": "false",
+  "username": "testautomation",
+  "password": "Welcome123"
+}
