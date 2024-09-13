@@ -9,7 +9,7 @@ using testautomation.pages.pageobjects;
 
 namespace testautomation.pages.commons
 {
-    public class LoginPage
+    public class LoginPage : Base
     {
 
         private IPage page;
@@ -18,21 +18,20 @@ namespace testautomation.pages.commons
 
         public async Task OpenApplication()
         {
-            string url = Actions.ReadConfig("url");
+            string url = Base.ReadConfig("url");
             await page.GotoAsync(url);
         }
 
         public async Task LogIn()
         {
             Login login = new Login();
-            Actions actions = new Actions();
 
-            string username = Actions.ReadConfig("username");
-            string password = Actions.ReadConfig("password");
+            string username = Base.ReadConfig("username");
+            string password = Base.ReadConfig("password");
 
-            await actions.FillData(page, login.usernameField, username, "Username");
-            await actions.FillData(page, login.passwordField, password, "Password");
-            await actions.ClickElement(page, login.signInButton, "Sign In Button");
+            await FillData(page, login.usernameField, username, "Username");
+            await FillData(page, login.passwordField, password, "Password");
+            await ClickElement(page, login.signInButton, "Sign In Button");
 
             await page.WaitForTimeoutAsync(5_000);
         }
@@ -40,10 +39,9 @@ namespace testautomation.pages.commons
         public async Task AcceptTerms_Condition()
         {
             Login login = new Login();
-            Actions actions = new Actions();
 
-            await actions.ClickCheckbox(page, login.acceptTermsAndCondition, "Username");
-            await actions.ClickElement(page, login.submitButton, "Submit Button");
+            await ClickCheckbox(page, login.acceptTermsAndCondition, "Username");
+            await ClickElement(page, login.submitButton, "Submit Button");
         }
 
     }

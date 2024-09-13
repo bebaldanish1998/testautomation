@@ -43,8 +43,8 @@ namespace testautomation.tests
         [SetUp]
         public async Task Setup()
         {
-            string browserName = Actions.ReadConfig("browser");
-            bool headless = bool.Parse(Actions.ReadConfig("headless"));
+            string browserName = Base.ReadConfig("browser");
+            bool headless = bool.Parse(Base.ReadConfig("headless"));
 
             playwright = await Playwright.CreateAsync();
             browserContext = await playwright.Chromium.LaunchPersistentContextAsync("", new BrowserTypeLaunchPersistentContextOptions() { Headless = headless, Channel = browserName });

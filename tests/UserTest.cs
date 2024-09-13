@@ -14,38 +14,36 @@ namespace testautomation.tests
         public async Task CreateUser()
         {
             LoginPage loginpage = new LoginPage(page);
-            HomePage homepage = new HomePage(page, firstName, lastName, emailId, phoneNumber, username);
+            HomePage homepage = new HomePage(page);
 
             await loginpage.OpenApplication();
             await loginpage.LogIn();
             await homepage.NavigateToManageUsersPage();
-            await homepage.CreateUser();
-            await homepage.ValidateUserDetails();
+            await homepage.CreateUser(firstName, lastName, emailId, phoneNumber, username);
         }
 
         [Test, Order(2)]
         public async Task EditUser()
         {
             LoginPage loginpage = new LoginPage(page);
-            HomePage homepage = new HomePage(page, firstName, lastName, emailId, phoneNumber, username);
+            HomePage homepage = new HomePage(page);
 
             await loginpage.OpenApplication();
             await loginpage.LogIn();
             await homepage.NavigateToManageUsersPage();
-            await homepage.EditUser();
-            await homepage.ValidateUserDetails();
+            await homepage.EditUser(firstName, lastName, emailId, username);
         }
 
         [Test, Order(3)]
         public async Task DeleteUser()
         {
+            HomePage homepage = new HomePage(page);
             LoginPage loginpage = new LoginPage(page);
-            HomePage homepage = new HomePage(page, firstName, lastName, emailId, phoneNumber, username);
 
             await loginpage.OpenApplication();
             await loginpage.LogIn();
             await homepage.NavigateToManageUsersPage();
-            await homepage.DeleteUser();
+            await homepage.DeleteUser(firstName, lastName);
 
             // Delete functionality is not working
         }

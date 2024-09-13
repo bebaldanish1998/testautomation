@@ -10,7 +10,7 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace testautomation.actions
 {
-    public class Actions
+    public class Base
     {
 
         public async Task ClickElement(IPage page, string locator, string element)
